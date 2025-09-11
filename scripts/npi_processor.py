@@ -10,6 +10,11 @@ df = pl.read_csv(npi_file_path, n_rows=1000)
 
 df_polars = pl.read_csv(npi_file_path)
 
+#added this following as a suggestion from LLM but still getting ""zsh: killed     /usr/local/bin/python3 
+for chunk in pd.read_csv("big.csv", chunksize=1000):
+    process(chunk)
+
+
 #lists how many columns there are and what they are = 330 columns
 df.columns
 
@@ -44,3 +49,4 @@ df_polars_small.write_csv(file_output_path, index = False)
 
 ##tried to run this script but got memory error because file is too big
 ##looked up how to fix this issue but it seems to just be a limitation of my computer
+#9/11/25 2pm asked Mo in office hours how to fix it and he was unsure as well
