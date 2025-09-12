@@ -1,6 +1,8 @@
 ##npi_processor.py
 
 #importing polars for this really big file
+from multiprocessing import process
+from turtle import pd
 import polars as pl
 
 npi_file_path = 'input/npidata_pfile_20050523-20250810.csv'
@@ -13,7 +15,6 @@ df_polars = pl.read_csv(npi_file_path)
 #added this following as a suggestion from LLM but still getting ""zsh: killed     /usr/local/bin/python3 
 for chunk in pd.read_csv("big.csv", chunksize=1000):
     process(chunk)
-
 
 #lists how many columns there are and what they are = 330 columns
 df.columns
